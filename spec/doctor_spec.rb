@@ -10,7 +10,7 @@ describe(Doctor) do
   end
 
   describe('#save') do
-    it('saves the doctor to teh doctor array') do
+    it('saves the doctor to the doctor array') do
       test_doctor = Doctor.new({name: 'Dr bob', specialty: 'psychiatry', id: nil})
       test_doctor.save
       expect(Doctor.all()).to(eq([test_doctor]))
@@ -30,20 +30,10 @@ describe(Doctor) do
     it('will assign a patient to a doctor') do
       test_doctor =  Doctor.new({name: 'Dr bob', specialty: 'psychiatry', id: nil})
       test_doctor.save()
-      test_patient = Patient.new({:name => "Dave", :birthday => "1991-12-13 00:00:00", :id => 1, :dr_id => 1})
+      test_patient = Patient.new({:name => "Dave", :birthday => "1991-12-13 00:00:00", :id => 1, :dr_id => nil})
       test_patient.assign_doctor(test_doctor.id)
       test_patient.save()
       expect(test_doctor.doctor_patients).to(eq([test_patient]))
     end
   end
-
-
-
-
-
-
-
-
-
-
 end
